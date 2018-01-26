@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh_CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <link th:href="@{/layui/css/layui.css}" rel="stylesheet" />
+
+    <script th:src="@{/layui/layui.js}"></script>
+
+    <title>管理员后台 | blog.noobug.org</title>
+</head>
+<body class="layui-layout-body">
+    <div class="layui-layout layui-layout-admin">
+        <div class="layui-header">
+            <div class="layui-logo">管理员后台</div>
+            <!-- 头部区域 -->
+            <ul class="layui-nav layui-layout-right">
+
+                <li class="layui-nav-item" th:if="${session.admin ne null}">
+                    <a href="javascript:;">
+                        <img src="http://t.cn/RCzsdCq" class="layui-nav-img" />
+                        <span th:text="${session.admin.getName()}"></span>
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="">基本资料</a></dd>
+                        <dd><a href="">安全设置</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a id="btnAdminLogout" href="#">注销</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="layui-side layui-bg-black">
+            <div class="layui-side-scroll" th:include="admin/include :: sidebar">
+                <!-- 左侧导航区域 -->
+
+            </div>
+        </div>
+
+        <div class="layui-body">
+            <!-- 内容主体区域 -->
+            <div style="padding: 15px;">内容主体区域</div>
+        </div>
+
+        <div class="layui-footer" th:include="admin/include :: footer">
+        </div>
+    </div>
+    <script>
+        //JavaScript代码区域
+        layui.use(['element','layer'], function(){
+            var element = layui.element;
+            var layer = layui.layer;
+            var $ = layui.jquery;
+
+            $("#btnAdminLogout").on("click", function(e){
+                e.preventDefault();
+
+                var load = layer.load(1);
+                $.post("/api/admin/logout", function(data){
+                    layer.close(load);
+                    window.location.href = "/adminLogin";
+                    return false;
+                });
+            });
+        });
+    </script>
+</body>
+</html>

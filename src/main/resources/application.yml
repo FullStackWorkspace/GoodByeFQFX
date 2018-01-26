@@ -1,11 +1,11 @@
-spring:
+ï»¿spring:
   jpa:
     hibernate:
       ddl-auto: none
     show-sql: true
 
   #======================================
-  # MySQL ÅäÖÃÏî
+  # MySQL é…ç½®é¡¹
   #
   datasource:
     url: jdbc:mysql://119.23.149.25:3306/fqfx_syjxzx?useUnicode=true&characterEncoding=utf8&useSSL=false&autoReconnect=true
@@ -17,12 +17,10 @@ spring:
     max-wait: 10000
 
   #========================
-  # Ç°¶ËÄ£°åÅäÖÃ
-  mvc:
-    view:
-      prefix: /WEB-INF/jsp
-      suffix: .jsp
-
+  # å‰ç«¯æ¨¡æ¿é…ç½®
+  thymeleaf:
+    cache: false
+    mode: HTML5
 
 server:
   tomcat:
