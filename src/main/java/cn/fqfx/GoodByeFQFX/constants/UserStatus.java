@@ -4,22 +4,22 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 管理员状态枚举
+ * 用户状态枚举
  */
-public enum AdminStatus {
-    NORMAL(1, "正常"), BANNED(2, "禁用"), SUPER(3, "超级");
+public enum UserStatus {
+    NORMAL(1, "学生"), BANNED(2, "教师");
 
     private Integer key;
     private String content;
     private static Map<String, Integer> map = new HashMap<>();
 
     static {
-        for (AdminStatus o : AdminStatus.values()) {
+        for (UserStatus o : UserStatus.values()) {
             map.put(o.content, o.key);
         }
     }
 
-    AdminStatus(Integer key, String content) {
+    UserStatus(Integer key, String content) {
         this.key = key;
         this.content = content;
     }
