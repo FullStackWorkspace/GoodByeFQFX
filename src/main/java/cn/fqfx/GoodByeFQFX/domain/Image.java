@@ -20,11 +20,12 @@ public class Image extends AbstractTickPojo {
     @GeneratedValue
     private Long id;
 
-
-    @Column(length = 20)
-    private String imageTitle;
-
-
-    @Column(length = 200)
+    @Column(length = 24)
+    private String name;
+    
+    @Column(length = 128)
     private String imageUrl;
+
+    @Column(name = "is_deleted")
+    private Boolean deleted;
 }

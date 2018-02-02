@@ -28,19 +28,19 @@ public class Title extends AbstractTickPojo {
     /**
      * 名称
      */
-    @Column(length = 12)
-    private String titleName;
+    @Column(length = 24)
+    private String name;
 
     /**
      * 父级导航
      */
-    @Column(length = 10)
+    @Column
     private Long parentId;
 
     /**
      * 链接
      */
-    @Column(length = 200)
+    @Column(length = 128)
     private String linkUrl;
 
     @JsonIgnore

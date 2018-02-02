@@ -27,7 +27,7 @@ public class Article extends AbstractTickPojo {
     private String content;
 
     @Column(length = 20)
-    private String articleTitle;
+    private String name;
 
     @Column(length = 20)
     private Date uploadTime;
@@ -35,4 +35,7 @@ public class Article extends AbstractTickPojo {
     @ManyToOne
     @JoinColumn(name = "title_id")
     private Title title;
+
+    @Column(name = "is_deleted")
+    private Boolean deleted;
 }

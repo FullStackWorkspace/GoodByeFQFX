@@ -27,19 +27,24 @@ public class User extends AbstractTickPojo {
      * 账号
      */
     @Column(length = 24, unique = true, nullable = false)
-    private String userAccount;
+    private String account;
 
     /**
      * 密码
      */
     @Column(length = 32)
-    private String userPassword;
+    private String password;
 
     /**
      * 昵称
      */
-    @Column(length = 12)
-    private String userName;
+    @Column(length = 24)
+    private String name;
+
+    /**
+     * 用户类型 枚举
+     */
+    private Integer status;
 
     /**
      * 院系
@@ -52,4 +57,7 @@ public class User extends AbstractTickPojo {
      */
     @Column(length = 12)
     private String major;
+
+    @Column(name = "is_deleted")
+    private Boolean deleted;
 }

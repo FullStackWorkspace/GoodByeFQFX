@@ -42,7 +42,7 @@ public class Admin extends AbstractTickPojo {
     private String name;
 
     /**
-     * 账号状态
+     * 账号状态 枚举
      */
     private Integer status;
 

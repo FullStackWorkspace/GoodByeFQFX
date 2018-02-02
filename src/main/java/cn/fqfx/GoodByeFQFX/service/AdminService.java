@@ -45,16 +45,16 @@ public class AdminService {
         Admin admin = adminRepository.findByAccount(account);
 
         if (admin == null) {
-            return new BaseDTO(1, false, "该账号不存在");
+            return BaseDTO.error(1, "帐号不存在");
         }
 
         String md5 = Utils.MD5(password);
         if (!admin.getPassword().equals(md5)) {
-            return new BaseDTO(2, false, "密码不正确");
+            return BaseDTO.error(2, "密码不正确");
         }
 
         if (admin.getStatus().equals(AdminStatus.BANNED.getKey())) {
-            return new BaseDTO(3, false, "该账号为禁用状态");
+            return BaseDTO.error(3, "该账号为禁用状态");
         }
 
         // 登录日志
@@ -65,7 +65,7 @@ public class AdminService {
         session.setAttribute(KEY_SESSION_ADMIN, admin);
         session.setMaxInactiveInterval(60 * 60);
         log.debug("[Admin] 管理员 {} - {} 登录系统", admin.getAccount(), admin.getName());
-        return BaseDTO.OK;
+        return BaseDTO.ok();
     }
 
     /**
@@ -77,11 +77,11 @@ public class AdminService {
     public BaseDTO logout(HttpSession session) {
         Object obj = session.getAttribute(KEY_SESSION_ADMIN);
         if (obj == null) {
-            return new BaseDTO(1, false, "登录用户为空");
+            return BaseDTO.error(1,  "登录用户为空");
         }
 
         session.removeAttribute(KEY_SESSION_ADMIN);
-        return BaseDTO.OK;
+        return BaseDTO.ok();
     }
 
     /**
@@ -102,7 +102,7 @@ public class AdminService {
      */
     public BaseDTO addNewAdmin(Admin admin) {
         if (adminRepository.findByAccount(admin.getAccount()) != null) {
-            return new BaseDTO(1, false, "该账号已存在");
+            return BaseDTO.error(1, "该账号已存在");
         }
         BaseDTO result = AdminValidate.validate(admin);
 
@@ -114,6 +114,6 @@ public class AdminService {
         admin.setPassword(Utils.MD5(admin.getPassword()));
         adminRepository.save(admin);
 
-        return BaseDTO.OK;
+        return BaseDTO.ok();
     }
 }
