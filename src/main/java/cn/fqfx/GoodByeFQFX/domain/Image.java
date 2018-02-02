@@ -15,16 +15,16 @@ import lombok.NoArgsConstructor;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class image {
-	@Id
+public class Image extends AbstractTickPojo {
+    @Id
     @GeneratedValue
-    private Long imageId;
-	
-	
-	@Column(length=20)
-	private String imageTitle;
+    private Long id;
 
-	
-	@Column(length=200)
-	private String imageUrl;
+
+    @Column(length = 20)
+    private String imageTitle;
+
+
+    @Column(length = 200)
+    private String imageUrl;
 }

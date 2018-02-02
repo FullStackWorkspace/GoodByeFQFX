@@ -18,21 +18,21 @@ import lombok.NoArgsConstructor;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class Article {
-	@Id
+public class Article extends AbstractTickPojo {
+    @Id
     @GeneratedValue
     private Long id;
-	
-	@Column(length=500)
-	private String content;
-	
-	@Column(length =20)
-	private String articleTitle;
-	
-	@Column(length =20)
-	private Date uploadTime;
-	
-	@ManyToOne
-	@JoinColumn(name = "titleId")
-	private Title title;
+
+    @Column(length = 500)
+    private String content;
+
+    @Column(length = 20)
+    private String articleTitle;
+
+    @Column(length = 20)
+    private Date uploadTime;
+
+    @ManyToOne
+    @JoinColumn(name = "title_id")
+    private Title title;
 }

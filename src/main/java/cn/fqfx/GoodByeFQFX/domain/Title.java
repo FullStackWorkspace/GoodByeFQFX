@@ -20,32 +20,32 @@ import lombok.NoArgsConstructor;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class Title {
-	@Id
+public class Title extends AbstractTickPojo {
+    @Id
     @GeneratedValue
-    private Long titleId;
+    private Long id;
 
     /**
      * 名称
      */
     @Column(length = 12)
     private String titleName;
-    
+
     /**
      * 父级导航
      */
-    @Column(length=10)
-    private Long parendId;
-    
+    @Column(length = 10)
+    private Long parentId;
+
     /**
      * 链接
-     */ 
-    @Column(length=200)
+     */
+    @Column(length = 200)
     private String linkUrl;
-    
+
     @JsonIgnore
-    @OneToMany(mappedBy = "title" ,fetch =FetchType.EAGER)
+    @OneToMany(mappedBy = "title", fetch = FetchType.EAGER)
     private Set<Article> articles = new HashSet<>();
-    
-    
+
+
 }

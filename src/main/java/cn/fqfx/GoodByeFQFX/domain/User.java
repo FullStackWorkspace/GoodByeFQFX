@@ -18,38 +18,38 @@ import lombok.NoArgsConstructor;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
-		@Id
-	    @GeneratedValue
-	    private Long userId;
+public class User extends AbstractTickPojo {
+    @Id
+    @GeneratedValue
+    private Long id;
 
-	    /**
-	     * 账号
-	     */
-	    @Column(length = 24, unique = true, nullable = false)
-	    private String userAccount;
+    /**
+     * 账号
+     */
+    @Column(length = 24, unique = true, nullable = false)
+    private String userAccount;
 
-	    /**
-	     * 密码
-	     */
-	    @Column(length = 32)
-	    private String userPassword;
+    /**
+     * 密码
+     */
+    @Column(length = 32)
+    private String userPassword;
 
-	    /**
-	     * 昵称
-	     */
-	    @Column(length = 12)
-	    private String userName;
-	    
-	    /**
-	     * 院系
-	     */
-	    @Column(length=12)
-	    private String faculty;
-	    
-	    /**
-	     * 专业
-	     */
-	    @Column(length=12)
-	    private String major;
+    /**
+     * 昵称
+     */
+    @Column(length = 12)
+    private String userName;
+
+    /**
+     * 院系
+     */
+    @Column(length = 12)
+    private String faculty;
+
+    /**
+     * 专业
+     */
+    @Column(length = 12)
+    private String major;
 }

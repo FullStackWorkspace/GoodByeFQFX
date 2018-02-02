@@ -27,6 +27,7 @@ public class AdminLog extends AbstractTickPojo {
      * 管理员外键
      */
     @ManyToOne
+    @JoinColumn(name = "admin_id")
     private Admin admin;
 
     /**
