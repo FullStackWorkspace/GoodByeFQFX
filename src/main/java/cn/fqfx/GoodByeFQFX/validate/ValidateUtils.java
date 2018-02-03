@@ -9,7 +9,7 @@ public class ValidateUtils {
      * @return
      */
     protected static Boolean ExistSpace(String str) {
-        return str.indexOf(" ") >= 0;
+        return str.contains(" ");
     }
 
     /**

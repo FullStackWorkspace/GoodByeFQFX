@@ -32,6 +32,11 @@ public class UserResource {
         return ResponseEntity.ok(BaseDTO.ok(result));
     }
 
+    /**
+     * 根据ID删除用户
+     * @param id 用户ID
+     * @return 处理结果
+     */
     @PutMapping("/remove/{id}")
     public ResponseEntity<BaseDTO> del(@PathVariable Long id) {
         BaseDTO result = userService.delById(id);

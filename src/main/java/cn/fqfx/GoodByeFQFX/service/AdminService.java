@@ -77,7 +77,7 @@ public class AdminService {
     public BaseDTO logout(HttpSession session) {
         Object obj = session.getAttribute(KEY_SESSION_ADMIN);
         if (obj == null) {
-            return BaseDTO.error(1,  "登录用户为空");
+            return BaseDTO.error(1, "登录用户为空");
         }
 
         session.removeAttribute(KEY_SESSION_ADMIN);
