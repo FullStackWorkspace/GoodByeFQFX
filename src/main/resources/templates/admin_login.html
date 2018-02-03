@@ -77,13 +77,19 @@
         // 管理员登录提交
         form.on('submit(formAdminLogin)', function(data){
             var load = layer.load(1);
-            $.post("/api/admin/login", data.field, function(data){
-                layer.close(load);
-                if(data.success){
-                    window.location.href = "/admin/index";
-                    return false;
-                }else{
-                    layer.msg(data.msg);
+            $.ajax({
+                url:"/api/admin/login",
+                type: "post",
+                dataType:"json",
+                data: data.field,
+                success: function(data){
+                    layer.close(load);
+                    if(data.success){
+                        window.location.href = "/admin/index";
+                        return false;
+                    }else{
+                        layer.msg(data.msg);
+                    }
                 }
             });
 
