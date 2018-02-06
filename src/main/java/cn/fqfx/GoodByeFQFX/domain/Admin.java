@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -49,4 +50,8 @@ public class Admin extends AbstractTickPojo {
     @OneToMany
     @JsonIgnore
     private Set<AdminLog> adminLogs;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "upload" ,fetch = FetchType.EAGER)
+    private Set<Upload> uploads = new HashSet<>();
 }

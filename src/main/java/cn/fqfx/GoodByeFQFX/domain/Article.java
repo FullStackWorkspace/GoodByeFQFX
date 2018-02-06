@@ -1,15 +1,12 @@
 package cn.fqfx.GoodByeFQFX.domain;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -31,6 +28,11 @@ public class Article extends AbstractTickPojo {
 
     @Column(length = 20)
     private Date uploadTime;
+
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "upload" ,fetch = FetchType.EAGER)
+    private Set<Upload> uploads = new HashSet<>();
 
     @ManyToOne
     @JoinColumn(name = "title_id")
