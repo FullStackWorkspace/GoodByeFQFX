@@ -31,7 +31,7 @@ public class Article extends AbstractTickPojo {
 
 
     @JsonIgnore
-    @OneToMany(mappedBy = "upload" ,fetch = FetchType.EAGER)
+    @OneToMany
     private Set<Upload> uploads = new HashSet<>();
 
     @ManyToOne

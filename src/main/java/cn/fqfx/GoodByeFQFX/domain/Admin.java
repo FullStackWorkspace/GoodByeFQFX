@@ -52,6 +52,6 @@ public class Admin extends AbstractTickPojo {
     private Set<AdminLog> adminLogs;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "upload" ,fetch = FetchType.EAGER)
+    @OneToMany
     private Set<Upload> uploads = new HashSet<>();
 }
