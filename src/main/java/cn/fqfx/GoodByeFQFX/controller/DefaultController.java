@@ -18,4 +18,10 @@ public class DefaultController
     {
         return "admin_login";
     }
+
+    @RequestMapping("/login")
+    public String login()
+    {
+        return "login";
+    }
 }
