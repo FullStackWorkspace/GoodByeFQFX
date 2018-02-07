@@ -51,7 +51,5 @@ public class Admin extends AbstractTickPojo {
     @JsonIgnore
     private Set<AdminLog> adminLogs;
 
-    @JsonIgnore
-    @OneToMany
-    private Set<Upload> uploads = new HashSet<>();
+
 }

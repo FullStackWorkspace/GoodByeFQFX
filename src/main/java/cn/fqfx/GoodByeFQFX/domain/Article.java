@@ -30,9 +30,9 @@ public class Article extends AbstractTickPojo {
     private Date uploadTime;
 
 
-    @JsonIgnore
-    @OneToMany
-    private Set<Upload> uploads = new HashSet<>();
+
+
+
 
     @ManyToOne
     @JoinColumn(name = "title_id")

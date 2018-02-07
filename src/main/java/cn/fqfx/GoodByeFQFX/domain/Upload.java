@@ -54,4 +54,6 @@ public class Upload extends AbstractTickPojo{
     @Column(length = 50)
     private String fileName;
 
+    @Column(name = "is_deleted")
+    private Boolean deleted;
 }
