@@ -29,11 +29,6 @@ public class Article extends AbstractTickPojo {
     @Column(length = 20)
     private Date uploadTime;
 
-
-
-
-
-
     @ManyToOne
     @JoinColumn(name = "title_id")
     private Title title;

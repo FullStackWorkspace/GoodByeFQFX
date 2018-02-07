@@ -43,9 +43,5 @@ public class Title extends AbstractTickPojo {
     @Column(length = 128)
     private String linkUrl;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "title", fetch = FetchType.EAGER)
-    private Set<Article> articles = new HashSet<>();
-
 
 }

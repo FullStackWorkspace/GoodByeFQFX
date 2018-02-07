@@ -47,9 +47,5 @@ public class Admin extends AbstractTickPojo {
      */
     private Integer status;
 
-    @OneToMany
-    @JsonIgnore
-    private Set<AdminLog> adminLogs;
-
 
 }
