@@ -9,9 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @Slf4j
 @RequestMapping("/api/upload")
@@ -30,5 +29,22 @@ public class UploadResource {
     public ResponseEntity<BaseDTO<Page<Upload>>> list(int page,int size){
         Page<Upload> result = uploadService.getUploadListByPage(new PageRequest(page,size));
         return  ResponseEntity.ok(BaseDTO.ok(result));
+    }
+
+    /**
+     * 删除文件
+     * @param id 参数主键id
+     * @return
+     */
+    @PutMapping("/remove/{id}")
+    public ResponseEntity<BaseDTO> del(@PathVariable Long id){
+        BaseDTO result = uploadService.delById(id);
+        return ResponseEntity.ok(result);
+    }
+
+    @RequestMapping("/add")
+    public ResponseEntity<BaseDTO> add(@RequestParam("file") MultipartFile file){
+        BaseDTO result = uploadService.addUpload(file);
+        return ResponseEntity.ok(result);
     }
 }
