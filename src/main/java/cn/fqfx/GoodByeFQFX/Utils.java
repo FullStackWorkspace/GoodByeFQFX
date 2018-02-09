@@ -1,5 +1,10 @@
 package cn.fqfx.GoodByeFQFX;
 
+import org.springframework.web.context.ContextLoader;
+import org.springframework.web.context.WebApplicationContext;
+
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 import java.security.MessageDigest;
 
 /**
@@ -35,4 +40,6 @@ public class Utils {
         }
         return ret.toString();
     }
+
+
 }

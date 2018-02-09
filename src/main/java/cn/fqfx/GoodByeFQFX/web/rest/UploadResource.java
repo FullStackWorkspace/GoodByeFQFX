@@ -12,6 +12,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
 @Slf4j
 @RequestMapping("/api/upload")
 @RestController
@@ -31,6 +35,8 @@ public class UploadResource {
         return  ResponseEntity.ok(BaseDTO.ok(result));
     }
 
+
+
     /**
      * 删除文件
      * @param id 参数主键id
@@ -42,9 +48,27 @@ public class UploadResource {
         return ResponseEntity.ok(result);
     }
 
+    /**
+     * 上传文件
+     * @param file 文件对象
+     * @param request
+     * @return
+     */
     @RequestMapping("/add")
-    public ResponseEntity<BaseDTO> add(@RequestParam("file") MultipartFile file){
-        BaseDTO result = uploadService.addUpload(file);
+    public ResponseEntity<BaseDTO> add(@RequestParam("file") MultipartFile file, HttpServletRequest request) {
+        BaseDTO result = uploadService.addUpload(file,request);
+        return ResponseEntity.ok(result);
+    }
+
+    /**
+     * 下载文件
+     * @param request
+     * @param response
+     * @return
+     */
+    @RequestMapping("/download")
+    public ResponseEntity<BaseDTO> download(HttpServletRequest request, HttpServletResponse response){
+        BaseDTO result = uploadService.download(request,response);
         return ResponseEntity.ok(result);
     }
 }
