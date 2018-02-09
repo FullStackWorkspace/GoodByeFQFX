@@ -26,3 +26,6 @@ server:
   tomcat:
     uri-encoding: UTF-8
 
+upload:
+  jar-path: System.getProperty("java.class.path");
+
