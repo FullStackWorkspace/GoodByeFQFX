@@ -5,6 +5,7 @@ import cn.fqfx.GoodByeFQFX.domain.Upload;
 import cn.fqfx.GoodByeFQFX.domain.dto.BaseDTO;
 import cn.fqfx.GoodByeFQFX.service.ArticleService;
 import cn.fqfx.GoodByeFQFX.service.UploadService;
+import com.sun.xml.internal.org.jvnet.staxex.Base64Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -55,6 +56,17 @@ public class ArticleResource {
     @PostMapping("/add")
     public ResponseEntity<BaseDTO> add(Article article){
         BaseDTO result = articleService.addArticle(article);
+        return ResponseEntity.ok(result);
+    }
+
+    /**
+     * 修改文章
+     * @param request
+     * @return
+     */
+    @RequestMapping("/update")
+    public ResponseEntity<BaseDTO> update(HttpServletRequest request){
+        BaseDTO result = articleService.updateArticle(request);
         return ResponseEntity.ok(result);
     }
 }

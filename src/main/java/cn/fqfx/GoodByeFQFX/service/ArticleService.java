@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import cn.fqfx.GoodByeFQFX.constants.ArticleConsts;
 
+import javax.servlet.http.HttpServletRequest;
 import java.time.ZonedDateTime;
 
 @Slf4j
@@ -54,5 +55,22 @@ public class ArticleService {
         article.setUploadTime(ZonedDateTime.now());
         articleRepository.save(article);
         return BaseDTO.ok();
+    }
+
+    /**
+     * 修改文章
+     * @param request
+     * @return
+     */
+    public BaseDTO updateArticle(HttpServletRequest request) {
+        String id = request.getParameter("articleId");
+        String content = request.getParameter("content");
+        Article article = articleRepository.findOne(Long.valueOf(id));
+        if(article!=null){
+            article.setContent(content);
+            articleRepository.save(article);
+            return BaseDTO.error(ArticleConsts.SUCCESS_ARTICLE_UPDATE_PARAM,"修改文章成功");
+        }
+        return BaseDTO.error(ArticleConsts.ERROR_ARTICLE_EMPTY_PARAM,"该文章不存在");
     }
 }

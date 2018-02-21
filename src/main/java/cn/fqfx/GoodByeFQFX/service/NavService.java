@@ -27,7 +27,6 @@ public class NavService {
 		return navRepository.findAll();
 
 	}
-
 	public BaseDTO addNewNav(Title title) {
 		if (navRepository.findByName(title.getName()) != null) {
 			return BaseDTO.error(1, "该导航已存在");

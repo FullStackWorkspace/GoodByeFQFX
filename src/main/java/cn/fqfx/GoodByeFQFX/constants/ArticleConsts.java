@@ -14,4 +14,9 @@ public final class ArticleConsts {
      * 查找文章为空
      */
     public final static Integer ERROR_ARTICLE_EMPTY_PARAM = 1;
+
+    /**
+     * 修改文章成功
+     */
+    public final static Integer SUCCESS_ARTICLE_UPDATE_PARAM = 2;
 }

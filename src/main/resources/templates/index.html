@@ -7,6 +7,8 @@
     <link href="layui/css/layui.css" />
 </head>
 <body>
+
+    <!-- 文件上传测试-->
     <form action="/api/upload/add" method="post" enctype="multipart/form-data">
         <label>文件名</label>
         <input type="text" name="fileName"/>
@@ -17,6 +19,7 @@
         <input type="file" name="file"/>
         <input type="submit"/>
     </form>
+    <!-- 文件下载测试-->
     <form action="/api/upload/download">
         <input type="text" name="uploadId"/>
         <input type="submit"/>
