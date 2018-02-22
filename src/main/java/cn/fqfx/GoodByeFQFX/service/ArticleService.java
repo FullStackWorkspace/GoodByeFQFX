@@ -60,6 +60,8 @@ public class ArticleService {
     /**
      * 修改文章
      * @param request
+     *        articleId 主键id
+     *        content 文章内容
      * @return
      */
     public BaseDTO updateArticle(HttpServletRequest request) {
@@ -69,7 +71,20 @@ public class ArticleService {
         if(article!=null){
             article.setContent(content);
             articleRepository.save(article);
-            return BaseDTO.error(ArticleConsts.SUCCESS_ARTICLE_UPDATE_PARAM,"修改文章成功");
+            return BaseDTO.ok("文章修改成功");
+        }
+        return BaseDTO.error(ArticleConsts.ERROR_ARTICLE_EMPTY_PARAM,"该文章不存在");
+    }
+
+    /**
+     * 查找文章
+     * @param id 主键id
+     * @return
+     */
+    public BaseDTO findArticleById(Long id) {
+        Article article = articleRepository.findOne(id);
+        if(article!=null){
+            return BaseDTO.ok(article);
         }
         return BaseDTO.error(ArticleConsts.ERROR_ARTICLE_EMPTY_PARAM,"该文章不存在");
     }

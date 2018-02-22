@@ -123,6 +123,12 @@ public class UploadService {
         return BaseDTO.ok("文件上传成功",realPath);
     }
 
+    /**
+     * 文件下载
+     * @param request
+     * @param response
+     * @return
+     */
     public BaseDTO download(HttpServletRequest request, HttpServletResponse response) {
         Long uploadId = Long.valueOf(request.getParameter("uploadId"));
         Upload upload = uploadRepository.findOne(uploadId);

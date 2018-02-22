@@ -62,11 +62,19 @@ public class ArticleResource {
     /**
      * 修改文章
      * @param request
+     *        articleId 主键id
+     *        content 文章内容
      * @return
      */
     @RequestMapping("/update")
     public ResponseEntity<BaseDTO> update(HttpServletRequest request){
         BaseDTO result = articleService.updateArticle(request);
+        return ResponseEntity.ok(result);
+    }
+
+    @PutMapping("/findArticleById/{id}")
+    public ResponseEntity<BaseDTO> findById(@PathVariable Long id){
+        BaseDTO result = articleService.findArticleById(id);
         return ResponseEntity.ok(result);
     }
 }
