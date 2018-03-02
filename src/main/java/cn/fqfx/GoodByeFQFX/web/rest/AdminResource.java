@@ -27,7 +27,7 @@ public class AdminResource {
      * @return BaseDTO
      */
     @PostMapping("/login")
-    public ResponseEntity<BaseDTO> login(Admin admin, HttpSession session, HttpServletRequest request) {
+    public ResponseEntity<BaseDTO> login(@RequestBody Admin admin, HttpSession session, HttpServletRequest request) {
         BaseDTO result = adminService.login(admin.getAccount(), admin.getPassword(), request.getRemoteAddr(), session);
 
         return new ResponseEntity<>(result, HttpStatus.OK);
